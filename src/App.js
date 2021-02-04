@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from "./logo.svg";
+import "./App.css";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Navigation from "./Components/Navigation";
+import Footer from "./Components/Footer";
+import Home from "./Views/Home";
+import Signup from './Views/Signup';
+import NotFouund from './Views/NotFouund';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Navigation />
+        <main style={{ marginTop: "4rem" }} className="page">
+          <Switch>
+            <Route exact path="/" component={Home}></Route>
+            <Route exact path="/vaccine-signup" component={Signup}></Route>
+            <Route component={NotFouund}></Route>
+          </Switch>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
